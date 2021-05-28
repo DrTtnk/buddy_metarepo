@@ -1,0 +1,6 @@
+{
+  "projects": {
+    "experiment_buddy": "git@github.com:ministry-of-silly-code/experiment_buddy.git",
+    "examples": "git@github.com:DrTtnk/examples.git"
+  }
+}
