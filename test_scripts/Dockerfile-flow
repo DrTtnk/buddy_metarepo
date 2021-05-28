@@ -9,3 +9,5 @@ RUN virtualenv buddy-env
 RUN . ./buddy-env/bin/activate \
  && pip install GitPython tensorboardX matplotlib wandb fabric cloudpickle PyYaml paramiko tqdm jax jaxlib
 
+RUN /buddy-env/bin/python -m pip install --upgrade pip
+
