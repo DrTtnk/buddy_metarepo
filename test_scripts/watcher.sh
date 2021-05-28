@@ -1,15 +1,17 @@
 #!/usr/bin/env bash
 set -e
-BUDDY_CURRENT_TESTING_BRANCH=$(git rev-parse --abbrev-ref HEAD)
+BUDDY_CURRENT_TESTING_BRANCH=$(cd experiment_buddy > /dev/null && git rev-parse --abbrev-ref HEAD)
 
 function align_example_branch() { (
   cd examples
   if [ git ls-remote --exit-code --heads git@github.com:user/repo.git $BUDDY_CURRENT_TESTING_BRANCH ]; then
-  elif [ git rev-parse --verify $BUDDY_CURRENT_TESTING_BRANCH ]; then
-    git checkout -b $BUDDY_CURRENT_TESTING_BRANCH master
-    sed -i "s|\.git\#egg|\.git\@$BUDDY_CURRENT_TESTING_BRANCH\#egg|" requirements.txt
-    git 
+    git checkout -b $BUDDY_CURRENT_TESTING_BRANCH origin/master
+    git push origin HEAD
+  elif [ ! git rev-parse --verify $BUDDY_CURRENT_TESTING_BRANCH ]; then
+    git checkout $BUDDY_CURRENT_TESTING_BRANCH origin/master
   fi
+
+  sed -i -e "s|\.git.*\#egg|\.git\@$BUDDY_CURRENT_TESTING_BRANCH\#egg|" requirements.txt
 ) }
 
 function update_repo() {
@@ -33,5 +35,5 @@ function run_on_cluster() {
 
 clear
 align_example_branch
-# update_repo
+update_repo
 # run_on_cluster
