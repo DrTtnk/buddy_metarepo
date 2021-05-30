@@ -7,7 +7,7 @@ RUN pip install virtualenv
 # Just to speed up the flow testing
 RUN virtualenv buddy-env
 RUN . ./buddy-env/bin/activate \
- && pip install GitPython tensorboardX matplotlib wandb fabric cloudpickle PyYaml paramiko tqdm jax jaxlib
+ && pip install GitPython tensorboardX matplotlib wandb fabric cloudpickle PyYaml paramiko tqdm aiohttp funcy jax jaxlib
 
 RUN /buddy-env/bin/python -m pip install --upgrade pip
 

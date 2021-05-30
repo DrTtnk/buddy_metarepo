@@ -22,7 +22,6 @@ git clone -q -b $BUDDY_CURRENT_TESTING_BRANCH git@github.com:DrTtnk/examples.git
 cd examples
 
 # 3 - Install the dependencies
-pip -q install -e "git+https://github.com/ministry-of-silly-code/experiment_buddy.git@$BUDDY_CURRENT_TESTING_BRANCH#egg=experiment_buddy" # ToDo temporary branch for test, it will be from master when ready
 pip -q install -r ./requirements.txt
 
 # Run your experiments

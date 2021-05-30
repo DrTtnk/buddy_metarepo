@@ -22,7 +22,7 @@ function align_example_branch() { (
 function update_repo() {
   sleep 1
 
-  meta exec "git add -A \
+    meta exec "git add -A \
           && git commit -q -m \"Testing changes\" \
           && git push -q --force \
           && git reset --soft HEAD~1 \
