@@ -3,7 +3,8 @@ set -x
 set -e
 unset -f
 
-BUDDY_CURRENT_TESTING_BRANCH=$(cd experiment_buddy > /dev/null && git rev-parse --abbrev-ref HEAD)
+export BUDDY_CURRENT_TESTING_BRANCH=$(cd experiment_buddy > /dev/null && git rev-parse --abbrev-ref HEAD)
+
 function align_example_branch() { (
   cd examples
   if ! git ls-remote --exit-code --heads git@github.com:DrTtnk/examples.git "$BUDDY_CURRENT_TESTING_BRANCH" > /dev/null; then
@@ -29,6 +30,11 @@ function update_repo() {
           || echo nothing to commit"
 }
 
+function run_local_deploy() {
+  pip -q install -r ./examples/requirements.txt
+  python ./examples/mnist_classifier.py
+}
+
 function run_deploy() {
   echo Loading Docker
   DEPLOY_DESTINATION=$1
@@ -44,6 +50,14 @@ function run_deploy() {
 }
 
 clear
+
 align_example_branch
 update_repo
-run_deploy $1
+
+if [ $1 = 'local' ]; then
+  export DEPLOY_DESTINATION=$1
+  run_local_deploy
+elif [ $1 = 'docker' ]; then
+  run_deploy $2
+fi
+
