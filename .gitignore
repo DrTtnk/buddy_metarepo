@@ -1,4 +1,6 @@
 examples
 experiment_buddy
+runs
+wandb
 buddy_env
 venv
