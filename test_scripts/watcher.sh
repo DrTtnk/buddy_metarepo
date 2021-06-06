@@ -6,7 +6,7 @@ unset -f
 BUDDY_CURRENT_TESTING_BRANCH=$(cd experiment_buddy > /dev/null && git rev-parse --abbrev-ref HEAD)
 function align_example_branch() { (
   cd examples
-  if ! git ls-remote --exit-code --heads git@github.com:DrTtnk/examples.git "$BUDDY_CURRENT_TESTING_BRANCH" > /dev/null; then
+  if ! git ls-remote --exit-code --heads git@github.com:ministry-of-silly-code/examples.git "$BUDDY_CURRENT_TESTING_BRANCH" > /dev/null; then
     # There is no examples branch, create it and push it
     git checkout -b $BUDDY_CURRENT_TESTING_BRANCH origin/master
     git push -u origin HEAD
@@ -22,7 +22,7 @@ function align_example_branch() { (
 function update_repo() {
   sleep 1
 
-  meta exec "git add -A \
+    meta exec "git add -A \
           && git commit -q -m \"Testing changes\" \
           && git push -q --force \
           && git reset --soft HEAD~1 \

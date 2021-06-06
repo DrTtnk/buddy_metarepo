@@ -18,11 +18,10 @@ virtualenv -q buddy-env  > /dev/null
 source ./buddy-env/bin/activate > /dev/null
 
 # 2 - Clone [or create] your project, in this case I'm using a basic mnist_classifier
-git clone -q -b $BUDDY_CURRENT_TESTING_BRANCH git@github.com:DrTtnk/examples.git
+git clone -q -b $BUDDY_CURRENT_TESTING_BRANCH git@github.com:ministry-of-silly-code/examples.git
 cd examples
 
 # 3 - Install the dependencies
-pip -q install -e "git+https://github.com/ministry-of-silly-code/experiment_buddy.git@$BUDDY_CURRENT_TESTING_BRANCH#egg=experiment_buddy" # ToDo temporary branch for test, it will be from master when ready
 pip -q install -r ./requirements.txt
 
 # Run your experiments
