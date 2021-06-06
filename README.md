@@ -73,6 +73,8 @@ nodemon --config ./test_scripts/nodemon.json -- cluster
 You can do the same runs within a Docker container, same conditions apply, but there is no need for a venv
 
 ```
+export WANDB_API_KEY=[your-wandb-key] # Just run it once, you can find your key here: https://wandb.ai/settings
+
 # Local 
 nodemon --config ./test_scripts/nodemon.json -- docker local
 
