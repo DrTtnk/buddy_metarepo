@@ -2,5 +2,6 @@ examples
 experiment_buddy
 runs
 wandb
+.idea
 buddy_env
 venv
