@@ -16,6 +16,7 @@ function align_example_branch() { (
     git checkout $BUDDY_CURRENT_TESTING_BRANCH
   fi
 
+  cat requirements.txt
   # Set the correct branch in the requirements 
   sed -i -e "s|\.git.*\#egg|\.git\@$BUDDY_CURRENT_TESTING_BRANCH\#egg|" requirements.txt
   cat requirements.txt
