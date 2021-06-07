@@ -18,12 +18,13 @@ function align_example_branch() { (
 
   # Set the correct branch in the requirements 
   sed -i -e "s|\.git.*\#egg|\.git\@$BUDDY_CURRENT_TESTING_BRANCH\#egg|" requirements.txt
+  cat requirements.txt
 ) }
 
 function update_repo() {
   sleep 1
 
-    meta exec "git add -A \
+  meta exec "git add -A \
           && git commit -q -m \"Testing changes\" \
           && git push -q --force \
           && git reset --soft HEAD~1 \
