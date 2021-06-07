@@ -31,7 +31,7 @@ function update_repo() {
 }
 
 function run_local_deploy() {
-  pip -q install -r ./examples/requirements.txt
+  pip install -r ./examples/requirements.txt
   python ./examples/mnist_classifier.py
 }
 
